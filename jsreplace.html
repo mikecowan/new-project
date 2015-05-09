@@ -1,0 +1,49 @@
+<html>
+<head>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<title>.club domains</title>
+</head>
+
+<body>
+
+<p id="content"><span>But what if you want to sell your {tld} and have some <span style="font-style: italic;">italic</span> text too?</span></p>
+
+<p id="test">a bbb a bbb a</p>
+
+<p id="par1"></p>
+<p id="par2"></p>
+<p id="par3"></p>
+<p id="par4"></p>
+<p id="par5"></p>
+<p id="par6"></p>
+
+</body>
+
+
+
+<script>
+$(document).ready(function() {
+
+	var content = $("#content");
+	
+//	var newContent = $("#content").html().replace(/{tld}/gi, "</span><em>.porn</em><span>");
+//	$("#content").html(newContent);
+	
+	$("#content").html($("#content").html().replace(/{tld}/gi, "</span><em>.porn</em><span>"));
+	
+	$("#test").text("test paragraph");
+
+});
+
+
+</script>
+
+<style>
+p {
+	font-family: cambria;
+}
+</style>
+
+
+
+</html>
