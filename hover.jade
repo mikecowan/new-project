@@ -1,0 +1,20 @@
+extends ./_header.jade
+block vars
+  - title='home'
+
+  body
+    br
+    .container(style="position:relative;")
+      p
+        | business business 
+        span.hover business
+        span.tooltip numbers numbers numbers
+        |  more paragraph
+
+  include ./_footer.jade
+
+  script(type='text/javascript').
+    $(document).ready(function() {
+    });
+
+

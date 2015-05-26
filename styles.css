@@ -1,0 +1,22 @@
+p {
+
+}
+
+.tooltip {
+	display: none;
+	background-color: black;
+	color: white;
+	position: absolute;
+	top: 10px;
+	padding: 5px;
+	margin: 10px;
+}
+
+.hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.hover:hover + .tooltip {
+	display: inline;
+}
