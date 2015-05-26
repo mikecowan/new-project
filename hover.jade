@@ -2,6 +2,7 @@ extends ./_header.jade
 block vars
   - title='home'
 
+block content
   body
     br
     .container(style="position:relative;")
@@ -11,10 +12,10 @@ block vars
         span.tooltip numbers numbers numbers
         |  more paragraph
 
-  include ./_footer.jade
+    include ./_footer.jade
 
-  script(type='text/javascript').
-    $(document).ready(function() {
-    });
+    script(type='text/javascript').
+      $(document).ready(function() {
+      });
 
 
