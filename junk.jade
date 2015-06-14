@@ -1,0 +1,21 @@
+extends _page.jade
+
+block title
+  title Junk Title
+
+block stylesheets
+  link(rel='stylesheet', type='text/css', href='../styles/junkstyles.css')
+
+block content
+  include menu.jade
+
+  h1 Welcome aboard
+
+append endOfPageScripts
+  script(type="text/javascript").
+    $(document).ready(function() {
+
+      $(".top > li").mouseover(function() {$(this).children().show();});
+      $(".top > li").mouseout(function() {$(this).children().hide();});
+
+    });

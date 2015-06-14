@@ -1,0 +1,12 @@
+block vars
+  - title = "Page Title"
+  
+doctype html
+html( lang="en" )
+  head
+    include _header.jade
+  body
+    block content
+    include _footer.jade
+    block endOfPageScripts
+      script(type="text/javascript")

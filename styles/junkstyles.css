@@ -1,0 +1,55 @@
+body {
+  font-family: cambria;
+  padding-left: 20px;
+}
+
+p {
+  color: orange;
+}
+
+ul.top {
+  font-weight: bold;
+  list-style: none;
+  padding-left: 0;
+  position: relative;
+}
+
+li {
+  padding: 5px 50px;
+  height: 20px;
+  width: 100px;
+  text-align: center;
+}
+
+ul.top > li {
+  border: 1px solid black;
+  float: left;
+}
+
+ul.top > li:hover {
+  cursor: pointer;
+  background-color: #aaa;
+}
+
+ul.top + * {
+  clear: both;
+}
+
+ul.middle {
+  position: relative;
+  padding-left: 0;
+  display: none;
+  top: 6px;
+  left:-51px;
+  margin-left: 0;
+}
+
+ul.middle > li {
+  list-style: none;
+  background-color: red;
+  border: 1px solid black;
+}
+
+ul.middle > li:hover {
+  background-color: #a00;
+}
