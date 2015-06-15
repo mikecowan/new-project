@@ -1,5 +1,12 @@
 p {
+	font-family: cambria;
+}
 
+p span {
+  color: #0d0;
+  font-weight: bold;
+  background-color: #000;
+  text-transform: uppercase;
 }
 
 .tooltip {
