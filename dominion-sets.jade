@@ -1,50 +1,68 @@
 extends _page.jade
 block title
   title Dominion Kingdom Generator
-append stylesheets
-  link(rel='stylesheet', type='text/css', href='../styles/junkstyles.css')
 
 block content
+  h1.center Dominion Kingdom Generator
 
-  .container(style="width:20%;")
-    div
-      input(type="checkbox")#toggle
-      label(for="toggle") Toggle All
-    div
-      input(type="checkbox" name="set")#base
-      label(for="base") Base
-    div
-      input(type="checkbox" name="set")#intrigue
-      label(for="intrigue") Intrigue
-    div
-      input(type="checkbox" name="set")#seaside
-      label(for="seaside") Seaside
-    div
-      input(type="checkbox" name="set")#alchemy
-      label(for="alchemy") Alchemy
-    div
-      input(type="checkbox" name="set")#prosperity
-      label(for="prosperity") Prosperity
-    div
-      input(type="checkbox" name="set")#cornucopia
-      label(for="cornucopia") Cornucopia
-    div
-      input(type="checkbox" name="set")#hinterlands
-      label(for="hinterlands") Hinterlands
-    div
-      input(type="checkbox" name="set")#darkages
-      label(for="darkages") Dark Ages
-    div
-      input(type="checkbox" name="set")#guilds
-      label(for="guilds") Guilds
-    div
-      input(type="checkbox" name="set")#promotional
-      label(for="promotional") Promotional
-    div
-      input(type="checkbox" name="set")#adventures
-      label(for="adventures") Adventures
+  .greyBG
+    .container
+      .row
+        div.col-sm-3.col-sm-push-2.col-xs-11
+          h3 Choose Expansions
+          ul#setBoxes
+            include setboxes.jade
+        div.col-sm-3.col-sm-push-3.col-xs-11
+          h3 Choose Card Restrictions
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  br
+  //
+    .holder(style="width:20%;")
+      div
+        input(type="checkbox")#toggle
+        label(for="toggle") Toggle All
+      div
+        input(type="checkbox" name="set")#base
+        label(for="base") Base
+      div
+        input(type="checkbox" name="set")#intrigue
+        label(for="intrigue") Intrigue
+      div
+        input(type="checkbox" name="set")#seaside
+        label(for="seaside") Seaside
+      div
+        input(type="checkbox" name="set")#alchemy
+        label(for="alchemy") Alchemy
+      div
+        input(type="checkbox" name="set")#prosperity
+        label(for="prosperity") Prosperity
+      div
+        input(type="checkbox" name="set")#cornucopia
+        label(for="cornucopia") Cornucopia
+      div
+        input(type="checkbox" name="set")#hinterlands
+        label(for="hinterlands") Hinterlands
+      div
+        input(type="checkbox" name="set")#darkages
+        label(for="darkages") Dark Ages
+      div
+        input(type="checkbox" name="set")#guilds
+        label(for="guilds") Guilds
+      div
+        input(type="checkbox" name="set")#promotional
+        label(for="promotional") Promotional
+      div
+        input(type="checkbox" name="set")#adventures
+        label(for="adventures") Adventures
 
-  .container(style="width:40%;")
+  .holder(style="width:40%;")
     div
       div
         input(type="checkbox")#CBvillage
@@ -56,102 +74,7 @@ block content
       div
         input(type="checkbox")#CBmoat
         label(for="CBmoat") must have moat with attacks
-    table
-      thead
-        tr
-          td &nbsp;
-          td any
-          td include
-          td exclude
-      tbody
-        tr
-          td Attacks
-          td
-            input(type="radio" name="attacks")
-          td
-            input(type="radio" name="attacks")
-          td
-            input(type="radio" name="attacks")
-        tr
-          td Cursers
-          td
-            input(type="radio" name="cursers")
-          td
-            input(type="radio" name="cursers")
-          td
-            input(type="radio" name="cursers")
-        tr
-          td Hand Size Attacks
-          td
-            input(type="radio" name="handsize")
-          td
-            input(type="radio" name="handsize")
-          td
-            input(type="radio" name="handsize")
-        tr
-          td Trashers
-          td
-            input(type="radio" name="trashers")
-          td
-            input(type="radio" name="trashers")
-          td
-            input(type="radio" name="trashers")
-        tr
-          td Alt VP
-          td
-            input(type="radio" name="altvp")
-          td
-            input(type="radio" name="altvp")
-          td
-            input(type="radio" name="altvp")
-        tr
-          td Treasures
-          td
-            input(type="radio" name="treasures")
-          td
-            input(type="radio" name="treasures")
-          td
-            input(type="radio" name="treasures")
-        tr
-          td Durations
-          td
-            input(type="radio" name="durations")
-          td
-            input(type="radio" name="durations")
-          td
-            input(type="radio" name="durations")
-        tr
-          td Trash for Benefits
-          td
-            input(type="radio" name="tfb")
-          td
-            input(type="radio" name="tfb")
-          td
-            input(type="radio" name="tfb")
-        tr
-          td Graverobber/Rogue
-          td
-            input(type="radio" name="rogue")
-          td
-            input(type="radio" name="rogue")
-          td
-            input(type="radio" name="rogue")
-        tr
-          td Coin Gainers
-          td
-            input(type="radio" name="coingainers")
-          td
-            input(type="radio" name="coingainers")
-          td
-            input(type="radio" name="coingainers")
-        tr
-          td Reserves
-          td
-            input(type="radio" name="reserves")
-          td
-            input(type="radio" name="reserves")
-          td
-            input(type="radio" name="reserves")
+    include restrictions.jade
 
     div
       button.btn.btn-primary(onclick="radioReset()") Reset
@@ -161,15 +84,35 @@ block content
   // coin gainers, reserve
 
   style.
-    html {
-      font-family: cambria;
-      font-size: 16px;
-    }
-
     body {
-      font-size: 16px;
+      font-family: cambria;
     }
-
+    h3, ul {
+      margin: 10px 0;
+    }
+    ul#setBoxes {
+      list-style: none;
+      padding-left: 10px;
+    }
+    #setBoxes li:last-child {
+      margin: 10px 15px;
+    }
+    .greyBG {
+      background-color: #ccc;
+      overflow: hidden;
+      padding: 1% 0;
+    }
+    .container > .row > div {
+      background-color: #fff;
+      border-top: 5px solid #0a0;
+      box-shadow: 2px 2px 0px 0px rgba(0,0,0,.5);
+    }
+    .center {
+      text-align: center;
+    }
+    .container:after {
+      clear: both;
+    }
     button {
       padding: 4px;
       margin-left:10%;
@@ -199,12 +142,13 @@ block content
       cursor: pointer;
     }
 
-    .container {
+    .holder {
       border: 1px solid black;
       display: inline-block;
       vertical-align: top;
+      clear: both;
     }
-    .container > div:not(.quad) > div {
+    .holder > div:not(.quad) > div {
       display: inline-block;
       width: 48%;
     }
@@ -254,15 +198,21 @@ append endOfPageScripts
     } // end customRadio()
 
     /* ***************************
+    // customize check boxes
+    *************************** */
+    function customCheck() {
+      $("#setBoxes li > *").wrap("<span class='custom-check'></span>");
+    }
+    /* ***************************
     // doc ready
     *************************** */
     $(document).ready(function() {
-      $("input:checkbox[id!='base']").each(function() {
+      /*$("input:checkbox[id!='base']").each(function() {
         $(this).removeAttr('checked');
       });
       $("input:checkbox[id='base']").prop('checked','true');
-      $("td:nth-child(2) > input:radio").prop('checked','true');
-
+      $("td:nth-child(2) > input:radio").prop('checked','true');*/
+      customCheck();
       customRadio("attacks");
       customRadio("cursers");
       customRadio("handsize");
