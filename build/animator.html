@@ -19,6 +19,92 @@
       <div id="whitebox" class="box2"></div>
       <div id="blackbox" class="box2"></div>
     </div>
+    <div id="flipsy"></div>
+    <div style="position:relative;transform:translate(100px);">
+      <div style="position:relative;background-color:#444;height:30px;width:45px;border-radius:10px;margin:20px 10px;transform:translate(50px,50px);z-index:2;"></div>
+      <div id="matrixy"><span>code</span></div>
+      <div id="dozer"><span>dozer</span></div>
+    </div>
+    <style>
+      /*matrix: rotate, scale, translate, skew with 6 parameters*/
+      #flipsy {
+        background-color: black;
+        height: 30px;
+        width: 45px;
+        margin: 20px 10px;
+        position: relative;
+        border-radius: 10px;
+        animation-name: flip;
+        animation-duration: 4s;
+      }
+      
+      @keyframes flip {
+        from {left: 0px;}
+        to {left: 100px;}
+      }
+      
+      #matrixy {
+        background-color: black;
+        font-family: calibri;
+        font-size: 12px;
+        text-align: center;
+        text-transform: uppercase;
+        color: white;
+        height: 30px;
+        width: 45px;
+        margin: 20px 10px;
+        position: relative;
+        border-radius: 10px;
+        animation-name: matrix;
+        animation-duration: 2s;
+        animation-delay: 2s;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+      }
+      
+      #matrixy > span {
+        position: absolute;
+        left: 9px;
+        top: 6px;
+      }
+      
+      #dozer > span {
+        position: absolute;
+        left: 3px;
+        top: 5px;
+      }
+      
+      @keyframes matrix {
+        0% {transform: translate(0px) rotate(0deg) scale(1);}
+        50% {transform: translate(50px,-100px) rotate(1080deg) scale(1);background-color:black;}
+        100% {transform: translate(300px) rotate(1440deg) scale(2);background-color:red;}
+      }
+      
+      #dozer {
+        background-color: red;
+        color: white;
+        font-family: calibri;
+        font-size: 14px;
+        text-align: center;
+        text-transform:uppercase;
+        width: 45px;
+        height: 30px;
+        position: relative;
+        opacity: 0;
+        animation-name: doze;
+        animation-delay: 4s;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        animation-timing-function: cubic-bezier(.21,1.56,.94,.32);
+        transform: translate(1000px, -50px);
+      }
+      
+      @keyframes doze {
+        0% {transform: translate(1000px, -50px) scale(1) skewX(0); opacity: 0; background-color: red;}
+        90% {transform: translate(400px, -50px) scale(1) skewX(0); opacity: 1; background-color: blue;}
+        100% {transform: translate(400px, -50px) scale(1.5) skewX(20deg); opacity: 1; background-color: blue;}
+      }
+    </style>
     <style>
       .box {
         width: 50px;

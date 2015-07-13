@@ -1,0 +1,52 @@
+extends _page.jade
+block title
+  title Berd League
+
+block content
+
+  .container
+    .row.col-sm-12
+      div#navList
+        div
+          span My Teams
+        div
+          span Players
+        div
+          span Standings
+
+  div#after
+    p blah blah
+
+  style.
+    body {
+      font-family: calibri;
+    }
+
+    #navList {
+      font-size: 0px;
+    }
+    #navList div {
+      border: 1px solid;
+      display: inline-block;
+      width: 200px;
+      height: 40px;
+      position: relative;
+      background: linear-gradient(to bottom right, #444, #bbb);
+      margin: 0px 10px;
+    }
+
+    #navList span {
+      font-size: 18px;
+      position: absolute;
+      margin-top: -0.7em;
+      top: 50%;
+      cursor: pointer;
+      text-align: center;
+      width: 50%;
+      left: 25%;
+      font-weight: 600;
+    }
+
+    #after {
+      clear: both;
+    }
