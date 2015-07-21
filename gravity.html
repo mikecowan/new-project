@@ -1,0 +1,112 @@
+<html>
+<head>
+<title>gravity</title>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+
+<body>
+
+<div>
+rebound percentage: <input type="text" id="rebound">
+<br />
+initial height: <input type="text" id="height">
+<br />
+number of bounces: <input type="text" id="bounces">
+
+<br /><br />
+horizontal shift: <input type="text" id="hshift">
+<br />
+vertical shift: <input type="text" id="vshift">
+<br /><br />
+horizontal movement: <input type="text" id="hmove">
+<br />
+rotation (deg): <input type="text" id="rotation">
+
+<br />
+<input type="button" value="submit" id="submit" onclick="calculate()">
+</div>
+
+<textarea rows="40" cols="75" id="data"></textarea>
+
+<p id="test"></p>
+</body>
+
+<script>
+function bounce_interval(times, t) {
+  var interval = 0;
+  while (t >= times[interval]) {
+    interval++;
+  }
+  return interval;
+}
+
+function calculate() {
+  var r = $("#rebound").val();
+  var d = parseInt($("#height").val());
+  var n = parseInt($("#bounces").val());
+  
+  var hshift = parseInt($("#hshift").val());
+  var vshift = parseInt($("#vshift").val());
+  var hmove = parseInt($("#hmove").val());
+  var rotation = parseInt($("#rotation").val());
+  
+  var g = 100;
+  
+  var impact_time = [];
+  var init_vel = [];
+  
+  impact_time[0] = Math.sqrt(2*d/g);
+  init_vel[0] = 0;
+  
+  for (var i = 1; i < n+1; i++)
+  {
+    if (i == 1) {
+      init_vel[i] = Math.sqrt(2*r*g*d);
+    }
+    else {
+      init_vel[i] = Math.sqrt(r)*Math.abs(g*(impact_time[i-1]-impact_time[i-2])-init_vel[i-1]);
+    }
+    impact_time[i] = impact_time[i-1]+2*init_vel[i]/g;
+  }
+  
+  var positions = [];
+  positions[0] = d;
+  
+  var total_time = impact_time[impact_time.length-1];
+  
+  for (var i = 1; i < 1000; i++)
+  {
+    var b = bounce_interval(impact_time, i*total_time/1000);
+    if (b == 0) {
+      positions[i] = -.5*g*Math.pow(i*total_time/1000,2) + d;
+    }
+    else {
+      positions[i] = -.5*g*Math.pow(i*total_time/1000-impact_time[b-1],2)+init_vel[b]*(i*total_time/1000-impact_time[b-1]);
+    }
+  }
+  positions[1000] = 0;
+  
+  var html_positions = [];
+  var str = "";
+  for (var i = 0; i < positions.length; i++) {
+    html_positions[i] = Math.round(d - positions[i]) + vshift;
+    var perc = i/10;
+    var htotal = hshift+i*hmove/1000;
+    str += perc + "% { top: " + html_positions[i] + "px;";
+    if (htotal != 0) { str += "left: " + htotal + "px;"; }
+    if (rotation != 0) { var ro = rotation*i/1000; str += "transform: rotate(" + ro + "deg);"; }
+    str += "}\r";
+  }
+  
+  str += "Total time: " + total_time + "s";
+  
+  $("#data").html(str);
+  $("#test").text();
+
+}
+
+</script>
+<style>
+p {margin: 0; font-family: courier-new;}
+</style>
+</html>
