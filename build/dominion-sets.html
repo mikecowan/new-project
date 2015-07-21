@@ -7,62 +7,118 @@
     <script src="http://knockoutjs.com/downloads/knockout-3.3.0.js"></script>
     <srcipt src="../../bootstrap-3.3.5-dist/js/bootstrap.js"></srcipt>
     <link rel="stylesheet" type="text/css" href="../styles.css">
-    <link rel="stylesheet" type="text/css" href="../../bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../styles/bootstrap-edit.css">
     <link rel="stylesheet" type="text/css" href="../../bootstrap-3.3.5-dist/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" type="text/css" href="../styles/junkstyles.css">
   </head>
   <body>
-    <div style="width:20%;" class="container">
-      <div>
-        <input type="checkbox" id="toggle">
-        <label for="toggle">Toggle All</label>
+    <h1 class="center">Dominion Kingdom Generator</h1>
+    <div class="greyBG">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3 col-sm-push-2 col-xs-11">
+            <h3>Choose Expansions</h3>
+            <ul id="setBoxes">
+              <li>
+                <input type="checkbox" id="toggle">
+                <label for="toggle">Toggle All</label>
+              </li>
+              <li>
+                <input type="checkbox" name="set" id="base">
+                <label for="base">Base</label>
+              </li>
+              <li>
+                <input type="checkbox" name="set" id="intrigue">
+                <label for="intrigue">Intrigue</label>
+              </li>
+              <li>
+                <input type="checkbox" name="set" id="seaside">
+                <label for="seaside">Seaside</label>
+              </li>
+              <li>
+                <input type="checkbox" name="set" id="alchemy">
+                <label for="alchemy">Alchemy</label>
+              </li>
+              <li>
+                <input type="checkbox" name="set" id="prosperity">
+                <label for="prosperity">Prosperity</label>
+              </li>
+              <li>
+                <input type="checkbox" name="set" id="cornucopia">
+                <label for="cornucopia">Cornucopia</label>
+              </li>
+              <li>
+                <input type="checkbox" name="set" id="hinterlands">
+                <label for="hinterlands">Hinterlands</label>
+              </li>
+              <li>
+                <input type="checkbox" name="set" id="darkages">
+                <label for="darkages">Dark Ages</label>
+              </li>
+              <li>
+                <input type="checkbox" name="set" id="guilds">
+                <label for="guilds">Guilds</label>
+              </li>
+              <li>
+                <input type="checkbox" name="set" id="adventures">
+                <label for="adventures">Adventures</label>
+              </li>
+              <li>
+                <input type="checkbox" name="set" id="promotional">
+                <label for="promotional">Promotional</label>
+              </li>
+              <li>
+                <input type="checkbox" id="strong">
+                <label for="strong"><b>Strongly enforce</b></label>
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-3 col-sm-push-3 col-xs-11">
+            <h3>Choose Card Restrictions</h3>
+          </div>
+        </div>
       </div>
-      <div>
-        <input type="checkbox" name="set" id="base">
-        <label for="base">Base</label>
-      </div>
-      <div>
-        <input type="checkbox" name="set" id="intrigue">
-        <label for="intrigue">Intrigue</label>
-      </div>
-      <div>
-        <input type="checkbox" name="set" id="seaside">
-        <label for="seaside">Seaside</label>
-      </div>
-      <div>
-        <input type="checkbox" name="set" id="alchemy">
-        <label for="alchemy">Alchemy</label>
-      </div>
-      <div>
-        <input type="checkbox" name="set" id="prosperity">
-        <label for="prosperity">Prosperity</label>
-      </div>
-      <div>
-        <input type="checkbox" name="set" id="cornucopia">
-        <label for="cornucopia">Cornucopia</label>
-      </div>
-      <div>
-        <input type="checkbox" name="set" id="hinterlands">
-        <label for="hinterlands">Hinterlands</label>
-      </div>
-      <div>
-        <input type="checkbox" name="set" id="darkages">
-        <label for="darkages">Dark Ages</label>
-      </div>
-      <div>
-        <input type="checkbox" name="set" id="guilds">
-        <label for="guilds">Guilds</label>
-      </div>
-      <div>
-        <input type="checkbox" name="set" id="promotional">
-        <label for="promotional">Promotional</label>
-      </div>
-      <div>
-        <input type="checkbox" name="set" id="adventures">
-        <label for="adventures">Adventures</label>
-      </div>
-    </div>
-    <div style="width:40%;" class="container">
+    </div><br><br><br><br><br><br><br><br><br>
+    <!--
+    .holder(style="width:20%;")
+      div
+        input(type="checkbox")#toggle
+        label(for="toggle") Toggle All
+      div
+        input(type="checkbox" name="set")#base
+        label(for="base") Base
+      div
+        input(type="checkbox" name="set")#intrigue
+        label(for="intrigue") Intrigue
+      div
+        input(type="checkbox" name="set")#seaside
+        label(for="seaside") Seaside
+      div
+        input(type="checkbox" name="set")#alchemy
+        label(for="alchemy") Alchemy
+      div
+        input(type="checkbox" name="set")#prosperity
+        label(for="prosperity") Prosperity
+      div
+        input(type="checkbox" name="set")#cornucopia
+        label(for="cornucopia") Cornucopia
+      div
+        input(type="checkbox" name="set")#hinterlands
+        label(for="hinterlands") Hinterlands
+      div
+        input(type="checkbox" name="set")#darkages
+        label(for="darkages") Dark Ages
+      div
+        input(type="checkbox" name="set")#guilds
+        label(for="guilds") Guilds
+      div
+        input(type="checkbox" name="set")#promotional
+        label(for="promotional") Promotional
+      div
+        input(type="checkbox" name="set")#adventures
+        label(for="adventures") Adventures
+    
+    -->
+    <div style="width:40%;" class="holder">
       <div>
         <div>
           <input type="checkbox" id="CBvillage">
@@ -232,15 +288,35 @@
     <p>TODO: add strong set rules, these should force radio boxes to "exclude" in some cases and disable other options. Choosing to exclude attacks should automatically exclude cursers and handsize attacks.</p>
     <!-- coin gainers, reserve-->
     <style>
-      html {
-        font-family: cambria;
-        font-size: 16px;
-      }
-      
       body {
-        font-size: 16px;
+        font-family: cambria;
       }
-      
+      h3, ul {
+        margin: 10px 0;
+      }
+      ul#setBoxes {
+        list-style: none;
+        padding-left: 10px;
+      }
+      #setBoxes li:last-child {
+        margin: 10px 15px;
+      }
+      .greyBG {
+        background-color: #ccc;
+        overflow: hidden;
+        padding: 1% 0;
+      }
+      .container > .row > div {
+        background-color: #fff;
+        border-top: 5px solid #0a0;
+        box-shadow: 2px 2px 0px 0px rgba(0,0,0,.5);
+      }
+      .center {
+        text-align: center;
+      }
+      .container:after {
+        clear: both;
+      }
       button {
         padding: 4px;
         margin-left:10%;
@@ -270,12 +346,13 @@
         cursor: pointer;
       }
       
-      .container {
+      .holder {
         border: 1px solid black;
         display: inline-block;
         vertical-align: top;
+        clear: both;
       }
-      .container > div:not(.quad) > div {
+      .holder > div:not(.quad) > div {
         display: inline-block;
         width: 48%;
       }
@@ -327,15 +404,21 @@
       } // end customRadio()
       
       /* ***************************
+      // customize check boxes
+      *************************** */
+      function customCheck() {
+        $("#setBoxes li > *").wrap("<span class='custom-check'></span>");
+      }
+      /* ***************************
       // doc ready
       *************************** */
       $(document).ready(function() {
-        $("input:checkbox[id!='base']").each(function() {
+        /*$("input:checkbox[id!='base']").each(function() {
           $(this).removeAttr('checked');
         });
         $("input:checkbox[id='base']").prop('checked','true');
-        $("td:nth-child(2) > input:radio").prop('checked','true');
-      
+        $("td:nth-child(2) > input:radio").prop('checked','true');*/
+        customCheck();
         customRadio("attacks");
         customRadio("cursers");
         customRadio("handsize");

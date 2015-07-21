@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>animator</title>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+    <script src="http://knockoutjs.com/downloads/knockout-3.3.0.js"></script>
+    <srcipt src="../../bootstrap-3.3.5-dist/js/bootstrap.js"></srcipt>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <link rel="stylesheet" type="text/css" href="../styles/bootstrap-edit.css">
+    <link rel="stylesheet" type="text/css" href="../../bootstrap-3.3.5-dist/css/bootstrap-theme.min.css">
+  </head>
+  <body>
+    <h1>animations</h1>
+    <div id="redbox" class="box"></div>
+    <div id="bluebox" class="box"></div>
+    <div id="holder">
+      <div id="greenbox" class="box2"></div>
+      <div id="whitebox" class="box2"></div>
+      <div id="blackbox" class="box2"></div>
+    </div>
+    <div id="flipsy"></div>
+    <div style="position:relative;transform:translate(100px);">
+      <div style="position:relative;background-color:#444;height:30px;width:45px;border-radius:10px;margin:20px 10px;transform:translate(50px,50px);z-index:2;"></div>
+      <div id="matrixy"><span>code</span></div>
+      <div id="dozer"><span>dozer</span></div>
+    </div>
+    <style>
+      /*matrix: rotate, scale, translate, skew with 6 parameters*/
+      #flipsy {
+        background-color: black;
+        height: 30px;
+        width: 45px;
+        margin: 20px 10px;
+        position: relative;
+        border-radius: 10px;
+        animation-name: flip;
+        animation-duration: 4s;
+      }
+      
+      @keyframes flip {
+        from {left: 0px;}
+        to {left: 100px;}
+      }
+      
+      #matrixy {
+        background-color: black;
+        font-family: calibri;
+        font-size: 12px;
+        text-align: center;
+        text-transform: uppercase;
+        color: white;
+        height: 30px;
+        width: 45px;
+        margin: 20px 10px;
+        position: relative;
+        border-radius: 10px;
+        animation-name: matrix;
+        animation-duration: 2s;
+        animation-delay: 2s;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+      }
+      
+      #matrixy > span {
+        position: absolute;
+        left: 9px;
+        top: 6px;
+      }
+      
+      #dozer > span {
+        position: absolute;
+        left: 3px;
+        top: 5px;
+      }
+      
+      @keyframes matrix {
+        0% {transform: translate(0px) rotate(0deg) scale(1);}
+        50% {transform: translate(50px,-100px) rotate(1080deg) scale(1);background-color:black;}
+        100% {transform: translate(300px) rotate(1440deg) scale(2);background-color:red;}
+      }
+      
+      #dozer {
+        background-color: red;
+        color: white;
+        font-family: calibri;
+        font-size: 14px;
+        text-align: center;
+        text-transform:uppercase;
+        width: 45px;
+        height: 30px;
+        position: relative;
+        opacity: 0;
+        animation-name: doze;
+        animation-delay: 4s;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        animation-timing-function: cubic-bezier(.21,1.56,.94,.32);
+        transform: translate(1000px, -50px);
+      }
+      
+      @keyframes doze {
+        0% {transform: translate(1000px, -50px) scale(1) skewX(0); opacity: 0; background-color: red;}
+        90% {transform: translate(400px, -50px) scale(1) skewX(0); opacity: 1; background-color: blue;}
+        100% {transform: translate(400px, -50px) scale(1.5) skewX(20deg); opacity: 1; background-color: blue;}
+      }
+    </style>
+    <style>
+      .box {
+        width: 50px;
+        height: 50px;
+        position: relative;
+      }
+      #redbox {background-color:red;}
+      #bluebox {background-color:blue;}
+      
+      #holder {
+        position: relative;
+        height: 100px;
+        padding: 20px;
+        width: 400px;
+        border: 1px solid;
+      }
+      .box2 {
+        position: absolute;
+      }
+      #greenbox {
+        background-color: green;
+        height: 50px;
+        width: 50px;
+        z-index: 3;
+      }
+      #whitebox {
+        background-color: white;
+        z-index: 2;
+        height: 50px;
+        width: 0px;
+        left: 70px;
+      }
+      #blackbox {
+        background-color: black;
+        height: 20px;
+        width: 200px;
+        left: 70px;
+        top: 30px;
+        z-index: 1;
+      }
+    </style>
+    <script>
+      $("#redbox").click(function() {
+        $(this).animate({left: "+50px", top: "+50px"}, 1000)
+      })
+      
+      $("#bluebox").click(function() {
+        $(this).animate({left: "+50px"}, 1000).animate({top: "-50px"}, 1000)
+      })
+      
+      $(document).ready(function() {
+        $("#whitebox").animate({width: "200px"}, 3000);
+        $("#greenbox").animate({left: "250px"}, 3000);
+      })
+    </script>
+    <hr>
+    <p>Written using <span>Jade</span></p>
+    <script type="text/javascript"></script>
+  </body>
+</html>
