@@ -4,49 +4,72 @@ block title
 
 block content
 
-  .container
-    .row.col-sm-12
-      div#navList
-        div
-          span My Teams
-        div
-          span Players
-        div
-          span Standings
+  #wrapper
+    nav
+      div
+        span home
+      div
+        span my teams
+      div
+        span create team
+      div
+        span standings
+      div
+        span rules
+      div
+        span vegas
 
-  div#after
-    p blah blah
+    #rightPanel
+      #createteamPanel
+        h2 Create New Teams
+        #allPlayersWrap
+          div
+            p all player table goes here
+            p blah blah blah
+            p blah blah blah
+            p blah blah blah
+            p blah blah blah
+            p blah blah blah
+            p blah blah blah
+        #newteamWrap
+          div
+            p create new team table goes here
+
+  p#test what color text?
 
   style.
-    body {
-      font-family: calibri;
-    }
-
-    #navList {
-      font-size: 0px;
-    }
-    #navList div {
-      border: 1px solid;
-      display: inline-block;
-      width: 200px;
-      height: 40px;
-      position: relative;
-      background: linear-gradient(to bottom right, #444, #bbb);
-      margin: 0px 10px;
-    }
-
-    #navList span {
-      font-size: 18px;
-      position: absolute;
-      margin-top: -0.7em;
-      top: 50%;
-      cursor: pointer;
-      text-align: center;
-      width: 50%;
-      left: 25%;
+    body { font-family: calibri; }
+    div, nav { border: 1px solid black; }
+    h2 { margin: 0; }
+    nav div {
+      color: orange;
       font-weight: 600;
+      text-transform: uppercase;
+      background: linear-gradient(to bottom right, black, white);
     }
 
-    #after {
-      clear: both;
+    @media (max-width: 499px) {
+      #test { color: red; }
+      nav div { padding-left: 10px; }
+    }
+
+    @media (min-width: 500px) and (max-width: 1100px) {
+      #test { color: yellow; }
+      #wrapper { display:inline-block; }
+      #rightPanel, nav { float: left; }
+      nav { width: 140px; }
+      #rightPanel { margin-left: 10px; }
+      #allPlayersWrap, #newteamWrap { margin: 10px 0; width: 307px; }
+      nav div { padding: 15px 20px; font-size: 16px;}
+    }
+
+    @media (min-width: 1101px) {
+      #test { color: green; }
+      #wrapper { display:inline-block; }
+      #rightPanel, nav { float: left; }
+      #rightPanel {  width: 890px; margin-left: 10px; }
+      nav { width: 175px; }
+      #allPlayersWrap, #newteamWrap { display: inline-block; width: 425px; margin: 10px 10px 10px 0;}
+      nav div { padding: 20px 25px; font-size: 20px;}
+      #newteamWrap {vertical-align: top;}
     }

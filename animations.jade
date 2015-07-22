@@ -1,0 +1,35 @@
+extends _page.jade
+block title
+  title Animations for Safari
+
+block content
+  #wrap
+    #anim
+      span span
+
+  style.
+    #wrap {position:relative;}
+    #anim {
+      position: relative;
+      border: 1px solid;
+      height: 50px;
+      width: 50px;
+
+      -webkit-animation-name: mover;
+      -webkit-animation-duration: 2s;
+      -webkit-animation-fill-mode: forwards;
+
+      animation-name: mover;
+      animation-duration: 2s;
+      animation-fill-mode: forwards;
+    }
+
+    @-webkit-keyframes mover {
+      from {left: 0px;}
+      to {left: 100px;}
+    }
+
+    @keyframes mover {
+      from {left: 0px;}
+      to {left: 100px;}
+    }
