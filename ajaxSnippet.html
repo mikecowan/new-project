@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>ajax test
+</title>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+
+<body>
+
+<h1>Header</h1>
+
+<p>paragraph 1</p>
+
+<p id="paragraph2"></p>
+
+<p>paragraph 3</p>
+
+</body>
+
+<script>
+$.ajax({
+  method: "GET",
+  url: "snippet.html",
+  dataType: "html",
+  success: function (url) {
+    $("#paragraph2").html(url);
+  }
+});
+
+function click1() {
+    $.ajax({
+        type: "GET",
+        url: '/Home/LoadPartial',
+        dataType: "html",
+        data: { id: 0 },
+        cache: false,
+        success: function (data) {
+            $("#par2").html(data);
+        }
+    });
+}
+</script>
+
+
+</html>
