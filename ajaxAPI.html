@@ -1,0 +1,120 @@
+<html>
+<head>
+<title>current temperature</title>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link href="../../bootstrap/css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body>
+<div id="ticker"><span>temp</span></div>
+
+<div id="bodyWrap">
+<h1>ajax notes</h1>
+<p>API: application programming interface</p>
+
+<p id="text">current Phoenix temperature: </p>
+
+<p id="text2"></p>
+
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</div>
+</body>
+
+<script>
+var temps = [];
+
+$(document).ready(function() {
+  //temps.push({"num": 100, "city": "a"});
+  //temps.push({"num": 200, "city": "b"});
+  setInterval(function() {getTemp(); }, 1000);
+  setInterval(function() {moveTicker(); }, 20);
+  //getCityTemp("cincinnati");
+  getCityTemp("Cincinnati");
+  getCityTemp("Phoenix");
+  getCityTemp("Austin");
+  getCityTemp("Charleston");
+  getCityTemp("LasVegas");
+  getCityTemp("Sydney");
+  getCityTemp("Tokyo");
+  getCityTemp("Stockholm");
+  setInterval(function() {
+    var tickerText = "***";
+    for (var i = 0; i < temps.length; i++) {
+      tickerText += " " + temps[i].city + ": " + temps[i].temp + " *";
+    }
+    tickerText += "**";
+    $("#ticker > span").text(tickerText);
+  }, 3000);
+});
+
+function getTemp() {
+  $.ajax({
+    type: "GET",
+    url: "http://api.openweathermap.org/data/2.5/weather?q=phoenix",
+    success: function(data) {
+      var fTemp = Math.round((data.main.temp-273.15)*1.8 + 32);
+      $("#text").text("current Phoenix temperature: " + fTemp);
+    },
+    dataType: 'jsonp'
+  });
+}
+
+function moveTicker() {
+  var left = parseInt($("#ticker > span").css('left'))+1;
+  if (left > window.outerWidth) { left = -300; }
+  $("#ticker > span").css("left", left);
+
+}
+
+function getCityTemp(city) {
+  $.ajax({
+    type: "GET",
+    url: "http://api.openweathermap.org/data/2.5/weather?q=%s",
+    data: {q: city},
+    async: false,
+    success: function(data) {
+      var fTemp = Math.round((data.main.temp-273.15)*1.8 + 32);
+      temps.push({"city": city, "temp": fTemp});
+    },
+    dataType: 'jsonp'
+  });
+}
+
+/*$.ajax({
+  type:"GET",
+  url:"https://api.meetup.com/2/cities",
+  success: function(data) {
+    for (var i = 0; i < data.results.length; i++) {
+      $("#text").append(data.results[i].city + "<br />")
+    }
+//    $('#text').text(JSON.stringify(data));
+  },
+  dataType: 'jsonp'
+});*/
+</script>
+
+<style>
+#ticker {
+  background-color: #aaa;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 100%;
+  padding: 10px;
+}
+
+#ticker > span {
+  position: relative;
+  left: -300px;
+  white-space: nowrap;
+
+}
+
+#bodyWrap {
+  margin-top: 40px;
+}
+</style>
+
+
+</html>

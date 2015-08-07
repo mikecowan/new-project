@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>javascript classes</title>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+
+<body>
+
+
+<p id="par1">click me</p>
+
+<p id="par2">click again</p>
+
+<p id="par3" style="visibility:hidden;">par1 has been clicked</p>
+
+<p>"click1" and "click2" in the var Initialize act as methods where "Initialize" acts as a static class.</p>
+
+</body>
+
+<script>
+$(document).ready(function() {
+  Initialize.click1();
+  Initialize.click2();
+});
+
+
+
+
+
+var Initialize = {
+  click1 : function () {
+    $("#par1").click(function() {
+      $("#par3").text("par1 has been clicked");
+      $("#par3").css("visibility",'visible');
+    });
+  }, // end of click1 method
+
+  click2 : function() {
+    $("#par2").click(function() {
+      $("#par3").text("par2!!!!");
+      $("#par3").css("visibility",'visible');
+    });
+  } // end of click2 method
+} // end of Initialize
+
+</script>
+
+</html>
