@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>tooltip popout</title>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+
+<body>
+
+<div class="holder">
+  <p>
+    <span class="mouseover">Details <span class="tool">Handsize reducers are attacks that force opponents to discard</span></span>
+    <span class="mouseover">List <span class="tool">Militia, Pillage, Torturer, Urchin / Mercenary</span></span>
+  </p>
+</div>
+
+</body>
+
+<style>
+html {
+  font-family: calibri;
+}
+.holder {
+  border: 0px solid black;
+  width: 50%;
+  margin: 50px;
+}
+.mouseover {
+  border-bottom: 1px dashed black;
+  cursor: pointer;
+  position: relative;
+}
+
+.tool {
+  position: absolute;
+  color: white;
+  background-color: black;
+  border-bottom: none;
+  display: none;
+  padding: 8px;
+  width: 230px;
+  left: 50px;
+  top: 50px;
+}
+
+.mouseover:hover > .tool {
+  display: inline-block;
+}
+
+.tool:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  border-bottom: 15px solid transparent;
+  border-right: 15px solid black;
+  position: absolute;
+  left: -14px;
+  top: 0px;
+}
+
+</style>
+
+
+<script type="text/javascript">
+
+</script>
+
+
+</html>
