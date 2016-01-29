@@ -1,0 +1,139 @@
+=====
+MODEL
+=====
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace MVCtest.Models
+{
+    public class Person
+    {
+        public string name { get; set; }
+        public int age { get; set; }
+        public int height { get; set; }
+        public int weight { get; set; }
+    }
+}
+
+
+======
+CSHTML
+======
+@model MVCtest.Models.Person
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/ViewPass.js"></script>
+    <link href="~/Content/ViewPass.css" rel="stylesheet" />
+</head>
+<body>
+    @using (Html.BeginForm("AddUser", "ViewPass", FormMethod.Post, new { id = "addNewUserForm" }))
+    {
+        <div>Age : @Html.TextBoxFor(x => x.age)</div>
+        <input id="adduser" type="button" value="Add User" />
+    }
+
+    <div id="contentDiv"></div>
+
+    <p id="text"></p>
+
+    <div><span id="clickSpan">Click</span></div>
+
+    <form id="personForm">
+        <input type="text" name="height" />
+    </form>
+    <div id="newDataDiv"></div>
+
+</body>
+</html>
+
+
+==========
+CONTROLLER
+==========
+using MVCtest.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace MVCtest.Controllers
+{
+    public class ViewPassController : Controller
+    {
+        //
+        // GET: /ViewPass/
+        private Person p;
+
+        public ActionResult Index()
+        {
+            p = new Person();
+            p.age = 12;
+            p.weight = 100;
+            return View(p);
+        }
+
+        public JsonResult AddUser(Person thePerson)
+        {
+            return Json(new { Status = "Success", newAge = thePerson.age+1 }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Display(Person thePerson)
+        {
+            int feet, inches;
+            feet = thePerson.height / 12;
+            inches = thePerson.height % 12;
+
+            return Json(new { f = feet, i = inches });
+        }
+    }
+}
+
+
+
+==========
+JAVASCRIPT
+==========
+$(document).ready(function () {
+    $('#adduser').click(function (e) {
+        e.preventDefault();
+        if ($("#addNewUserForm").valid()) { //if you use validation
+            $.ajax({
+                url: $("#addNewUserForm").attr('action'),
+                type: $("#addNewUserForm").attr('method'),
+                data: $("#addNewUserForm").serialize(),
+                success: function (data) {
+                    //alert(data.Status);
+                    $("#contentDiv").html("<b>" + data.newAge + "</b>");
+                }
+            });
+        }
+    });
+
+    $("#clickSpan").click(function () {
+        $.ajax({
+            url: 'ViewPass/Display',
+            type: 'POST',
+            data: $("#personForm").serialize(),
+            success: function (data) {
+                $("#newDataDiv").html("He is " + data.f + "\'" + data.i + "\"");
+            }
+        });
+    });
+
+
+
+});
