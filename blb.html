@@ -7,15 +7,18 @@
 <body>
 
 <nav class="">
-<div class=""><a href="">home</a></div><div class=""><a href="">my teams</a></div><div class=""><a href="">create team</a></div><div class=""><a href="">standings</a></div><div class=""><a href="">rules</a></div><div class=""><a href="">logout</a></div>
+<div class=""><a href="">home</a></div><div class=""><a href="">my teams</a></div><div class=""><a href="">create team</a></div><div class=""><a href="">standings</a></div><div class=""><a href="">rules</a></div><div class=""><a href="">logout</a></div><div><b>You owe <span style="color: red;">$20</span> for X team(s) | Your entry fees are <span style="color: green;">paid</span></b></div>
 </nav>
 
 <div id="contentDiv" class="border">
-	<p>Welcome to BLB</p>
+	<h1>Welcome to BLB</h1>
+	<p>Team creation will be disabled as soon as the tournament begins.</p>
+	<p>Team deletion will be disabled as soon as the tournament begins.</p>
+	<p>All funds must be received by X for any team to be considered.</p>
 </div>
 
 <div>
-	<p>My Teams</p>
+	<h2>My Teams</h2>
 
 	<table class="table myTeamTable">
 		<thead>
@@ -102,24 +105,159 @@
 </div>
 
 <div>
-	<p>Players</p>
+	<h2>Players</h2>
 
-	<table id="playersTable" class="table">
+	<h3>Filters</h3>
+	<div id="filtersDiv">
+		<div>
+			<h4>Rank</h4>
+			<ul>
+				<li><input type="checkbox" id="cb1" checked><label for="cb1"> One</label></li>
+				<li><input type="checkbox" id="cb2" checked><label for="cb2"> Two</label></li>
+				<li><input type="checkbox" id="cb3" checked><label for="cb3"> Three</label></li>
+				<li><input type="checkbox" id="cb4" checked><label for="cb4"> Four</label></li>
+				<li><input type="checkbox" id="cb5" checked><label for="cb5"> Five</label></li>
+			</ul>
+		</div><div>
+			<h4>Region</h4>
+			<ul>
+				<li><input type="checkbox" id="cbregion1" checked><label for="cbregion1"> R1</label></li>
+				<li><input type="checkbox" id="cbregion2" checked><label for="cbregion2"> R2</label></li>
+				<li><input type="checkbox" id="cbregion3" checked><label for="cbregion3"> R3</label></li>
+				<li><input type="checkbox" id="cbregion4" checked><label for="cbregion4"> R4</label></li>
+			</ul>
+		</div><div>
+			<h4>PPG</h4>
+			<p>Minimum:</p>
+			<input type="text" id="ppgmin" size="5" maxlength="4" value="0">
+		</div><div>
+			<h4>Seed</h4>
+			<p>Maximum:</p>
+			<select size="5" style="width: 75px;">
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+				<option>6</option>
+				<option>7</option>
+				<option>8</option>
+				<option>9</option>
+				<option>10</option>
+				<option>11</option>
+				<option>12</option>
+				<option>13</option>
+				<option>14</option>
+				<option>15</option>
+				<option selected>16</option>
+			</select>
+		</div><div>
+			<h4>School</h4>
+			<p>Include (ctrl + click):</p>
+			<select size="5" multiple style="width: 125px;">
+				<option selected>Kansas</option>
+				<option selected>Kentucky</option>
+				<option selected>Baylor</option>
+				<option selected>Texas A&M</option>
+				<option selected>Oklahoma</option>
+				<option selected>South Carolina</option>
+				<option selected>Nebraska</option>
+			</select>
+		</div><div>
+			<h4>Conference</h4>
+			<p>Include (ctrl + click):</p>
+			<select size="5" multiple style="width: 125px;">
+				<option selected>Big 12</option>
+				<option selected>ACC</option>
+				<option selected>Big Ten</option>
+				<option selected>SEC</option>
+				<option selected>Big East</option>
+				<option selected>Pac 12</option>
+				<option selected>MVC</option>
+				<option selected>American</option>
+				<option selected>A 10</option>
+			</select>
+		</div><div style="vertical-align:bottom;">
+			<button>Apply</button>
+			<button>Reset</button>
+		</div>
+	</div>
+
+	<br />
+
+	<div id="playersDiv">
+		<table id="playersTable" class="table">
 		<thead>
 			<tr>
-				<th>Rank</th>
-				<th>Player</th>
-				<th>PPG</th>
-				<th>School</th>
+				<th><span data-sort="default">Rank</span></th>
+				<th><span data-sort="default">Player</span></th>
+				<th><span data-sort="default">PPG</span></th>
+				<th><span data-sort="default">School</span></th>
+				<th><span data-sort="default">Region</span></th>
+				<th><span data-sort="default">Seed</span></th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
+			<tr>
+				<td data-sort-value="3">3</td>
+				<td data-sort-value="Bob Jones">Bob Jones</td>
+				<td data-sort-value="1.1">1.1</td>
+				<td data-sort-value="Kentucky">Kentucky</td>
+				<td data-sort-value=""></td>
+				<td data-sort-value=""></td>
+				<td><a href="">Add</a></td>
+			</tr>
+			<tr>
+				<td data-sort-value="4">4</td>
+				<td data-sort-value="Tyler H">Tyler H</td>
+				<td data-sort-value="2.4">2.4</td>
+				<td data-sort-value="UNC">UNC</td>
+				<td data-sort-value=""></td>
+				<td data-sort-value=""></td>
+				<td><a href="">Add</a></td>
+			</tr>
+			<tr>
+				<td data-sort-value="3">3</td>
+				<td data-sort-value="Kelly Oubre">Kelly Oubre</td>
+				<td data-sort-value="4.4">4.4</td>
+				<td data-sort-value="Kansas">Kansas</td>
+				<td data-sort-value=""></td>
+				<td data-sort-value=""></td>
+				<td><a href="">Add</a></td>
+			</tr>
+			<tr>
+				<td data-sort-value="2">2</td>
+				<td data-sort-value="Ned Stark">Ned Stark</td>
+				<td data-sort-value="10">10</td>
+				<td data-sort-value="Alaska">Alaska</td>
+				<td data-sort-value=""></td>
+				<td data-sort-value=""></td>
+				<td><a href="">Add</a></td>
+			</tr>
 		</tbody>
-	</table>
+		</table><table id="tempTeamTable" class="table">
+			<thead>
+				<tr>
+					<th>Player</th>
+					<th>Rank</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th>Name: <input type="text" id="newTeamName" size="10" maxlength="50"></th>
+					<th><button id="addTeamButton">Add Team</button></th>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
 </div>
 
 <div>
-	<p>Standings</p>
+	<h2>Standings</h2>
 
 	<table id="standingsTable" class="table">
 		<thead>
@@ -187,7 +325,7 @@
 </div>
 
 <div>
-	<p>Rules</p>
+	<h2>Rules</h2>
 	<ul>
 		<li>Participants create teams consisting of five players.</li>
 		<li>Players can be from any school, and players on the same team may be from the same or different schools.</li>
@@ -201,7 +339,62 @@
 </body>
 
 <script>
+$("a").click(function(e) {
+	e.preventDefault();
+});
 
+$(document).on("click", "#playersTable span", function() {
+	var tbody = $("#playersTable tbody");
+	var colIndex = $(this).parent().index();
+	var colNumber = colIndex + 1;
+	var sortVal = $(this).attr('data-sort');
+
+	sortVal = sortVal == "desc" ? "asc" : "desc";
+	$(this).attr('data-sort', sortVal);nextRowValue
+
+	var rowTotal = $("#playersTable tbody tr").length;
+
+	if (sortVal == "desc") {
+		for (var i = 0; i < rowTotal - 1; i++) {
+			for (var j = 1; j < rowTotal - i; j++) {
+				var currentRowValue = tbody.find('tr:nth-child(' + j + ') td:nth-child(' + colNumber + ')').attr('data-sort-value');
+				var nextRowValue = tbody.find('tr:nth-child(' + (j+1) + ') td:nth-child(' + colNumber + ')').attr('data-sort-value');
+
+				currentRowValue = colNumber == 3 ? parseFloat(currentRowValue) : currentRowValue;
+				nextRowValue = colNumber == 3 ? parseFloat(nextRowValue) : nextRowValue;
+
+				if (currentRowValue < nextRowValue) {
+					swapTableRows('playersTable', j, j+1);
+				}
+			}
+		}
+	}
+	else {
+		for (var i = 0; i < rowTotal - 1; i++) {
+			for (var j = 1; j < rowTotal - i; j++) {
+				var currentRowValue = tbody.find('tr:nth-child(' + j + ') td:nth-child(' + colNumber + ')').attr('data-sort-value');
+				var nextRowValue = tbody.find('tr:nth-child(' + (j+1) + ') td:nth-child(' + colNumber + ')').attr('data-sort-value');
+
+				currentRowValue = colNumber == 3 ? parseFloat(currentRowValue) : currentRowValue;
+				nextRowValue = colNumber == 3 ? parseFloat(nextRowValue) : nextRowValue;
+
+				if (currentRowValue > nextRowValue) {
+					swapTableRows('playersTable', j, j+1);
+				}
+			}
+		}
+	}
+
+	//$("#datasort").text("hi");
+
+	//$("#datasort").text(tbody.find('tr:nth-child(1) td:nth-child(' + colNumber + ')').attr('data-sort-value'));
+});
+
+function swapTableRows(tableID, r1, r2) {
+	var temp = $('#' + tableID + ' tbody tr:nth-child(' + r1 + ')').html();
+	$('#' + tableID + ' tbody tr:nth-child(' + r1 + ')').html($('#' + tableID + ' tbody tr:nth-child(' + r2 + ')').html());
+	$('#' + tableID + ' tbody tr:nth-child(' + r2 + ')').html(temp);
+}
 </script>
 
 <style>
@@ -238,13 +431,32 @@ nav div {
 	width: 30%;
 }
 
+#playersTable {
+	margin-right: 10px;
+}
 #playersTable th:first-child, #playersTable th:nth-child(3) {
 	width: 10%;
+}
+
+#playersTable th:nth-child(2) {
+	width: 20%;
+}
+
+#playersTable span {
+	cursor: pointer;
 }
 
 #standingsTable th:last-child {
 	width: 60%;
 	text-align: center;
+}
+
+#playersDiv table {
+	display: inline-block;
+}
+
+#tempTeamTable {
+	width: 20%;
 }
 
 .table tbody tr:nth-child(even) {
@@ -255,6 +467,43 @@ nav div {
 	background-color: #ededed;
 }
 
+#filtersDiv > div {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 20px;
+}
+
+#filtersDiv label {
+	cursor: pointer;
+}
+
+#filtersDiv ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+h4 {
+	margin-bottom: 0;
+}
 </style>
 
 </html>
+
+<!--
+Notes: 
+* trim whitespace from team name and check for "" equality
+* don't care if multiple teams have the same name ... not checking
+* last column in tempTeamTable is for player removal
+* tempTeamTable submit buttom should check that rankSum < 11 before ajax call
+* team submission should redirect (new partial view) indicating that the team has successfully been added.
+	e.g. "Success! Your team [teamname] has been added. Check [link: my teams] to see your new team"
+* home screen should indicate amount person owes and whether or not they have paid
+* add the ability to delete a team, which will be removed as soon as games start
+* team creation should be disabled as soon as games start also
+* highlight all of the user's teams in the standings menu
+* Add condition to show "you have no teams"
+* remove ability to add/delete teams when user has paid
+* ambitious additions:
+	hide teams that are mathematically eliminated from prize money contention
+	color-coding for "dominance" for any team click
+-->
